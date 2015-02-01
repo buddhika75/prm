@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MeasurmentUnitRelationshipsEditDlg" widgetVar="MeasurmentUnitRelationshipsEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMeasurmentUnitRelationshipsTitle}">
+            <h:form id="MeasurmentUnitRelationshipsEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{measurmentUnitRelationshipsController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMeasurmentUnitRelationshipsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{measurmentUnitRelationshipsController.selected.id}" title="#{bundle.EditMeasurmentUnitRelationshipsTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditMeasurmentUnitRelationshipsLabel_measurmentUnitLeft}" for="measurmentUnitLeft" />
+                        <p:selectOneMenu id="measurmentUnitLeft" value="#{measurmentUnitRelationshipsController.selected.measurmentUnitLeft}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{measurmentUnitController.itemsAvailableSelectOne}"
+                                           var="measurmentUnitLeftItem"
+                                           itemValue="#{measurmentUnitLeftItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMeasurmentUnitRelationshipsLabel_measurmentUnitRight}" for="measurmentUnitRight" />
+                        <p:selectOneMenu id="measurmentUnitRight" value="#{measurmentUnitRelationshipsController.selected.measurmentUnitRight}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{measurmentUnitController.itemsAvailableSelectOne}"
+                                           var="measurmentUnitRightItem"
+                                           itemValue="#{measurmentUnitRightItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMeasurmentUnitRelationshipsLabel_unitRatio}" for="unitRatio" />
+                        <p:inputText id="unitRatio" value="#{measurmentUnitRelationshipsController.selected.unitRatio}" title="#{bundle.EditMeasurmentUnitRelationshipsTitle_unitRatio}" />
+                        <p:outputLabel value="#{bundle.EditMeasurmentUnitRelationshipsLabel_item}" for="item" />
+                        <p:selectOneMenu id="item" value="#{measurmentUnitRelationshipsController.selected.item}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{itemController.itemsAvailableSelectOne}"
+                                           var="itemItem"
+                                           itemValue="#{itemItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMeasurmentUnitRelationshipsLabel_creater}" for="creater" />
+                        <p:selectOneMenu id="creater" value="#{measurmentUnitRelationshipsController.selected.creater}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="createrItem"
+                                           itemValue="#{createrItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMeasurmentUnitRelationshipsLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{measurmentUnitRelationshipsController.selected.createdAt}" title="#{bundle.EditMeasurmentUnitRelationshipsTitle_createdAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditMeasurmentUnitRelationshipsLabel_retirer}" for="retirer" />
+                        <p:selectOneMenu id="retirer" value="#{measurmentUnitRelationshipsController.selected.retirer}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="retirerItem"
+                                           itemValue="#{retirerItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMeasurmentUnitRelationshipsLabel_retitredAt}" for="retitredAt" />
+                        <p:calendar id="retitredAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{measurmentUnitRelationshipsController.selected.retitredAt}" title="#{bundle.EditMeasurmentUnitRelationshipsTitle_retitredAt}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{measurmentUnitRelationshipsController.update}" value="#{bundle.Save}" update="display,:MeasurmentUnitRelationshipsListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MeasurmentUnitRelationshipsEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MeasurmentUnitRelationshipsEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

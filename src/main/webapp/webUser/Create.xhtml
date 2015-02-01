@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="WebUserCreateDlg" widgetVar="WebUserCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateWebUserTitle}">
+            <h:form id="WebUserCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{webUserController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_userName}" for="userName" />
+                        <p:inputText id="userName" value="#{webUserController.selected.userName}" title="#{bundle.CreateWebUserTitle_userName}" required="true" requiredMessage="#{bundle.CreateWebUserRequiredMessage_userName}"/>
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{webUserController.selected.password}" title="#{bundle.CreateWebUserTitle_password}" />
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{webUserController.selected.name}" title="#{bundle.CreateWebUserTitle_name}" />
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{webUserController.selected.description}" title="#{bundle.CreateWebUserTitle_description}" />
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_address}" for="address" />
+                        <p:inputTextarea rows="4" cols="30" id="address" value="#{webUserController.selected.address}" title="#{bundle.CreateWebUserTitle_address}" />
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{webUserController.selected.phone}" title="#{bundle.CreateWebUserTitle_phone}" />
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_mobile}" for="mobile" />
+                        <p:inputText id="mobile" value="#{webUserController.selected.mobile}" title="#{bundle.CreateWebUserTitle_mobile}" />
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{webUserController.selected.email}" title="#{bundle.CreateWebUserTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{webUserController.selected.fax}" title="#{bundle.CreateWebUserTitle_fax}" />
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_creater}" for="creater" />
+                        <p:selectOneMenu id="creater" value="#{webUserController.selected.creater}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="createrItem"
+                                           itemValue="#{createrItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{webUserController.selected.createdAt}" title="#{bundle.EditWebUserTitle_createdAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_retirer}" for="retirer" />
+                        <p:selectOneMenu id="retirer" value="#{webUserController.selected.retirer}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="retirerItem"
+                                           itemValue="#{retirerItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_retitredAt}" for="retitredAt" />
+                        <p:calendar id="retitredAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{webUserController.selected.retitredAt}" title="#{bundle.EditWebUserTitle_retitredAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateWebUserLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{webUserController.selected.id}" title="#{bundle.CreateWebUserTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{webUserController.create}" value="#{bundle.Save}" update="display,:WebUserListForm:datalist,:growl" oncomplete="handleSubmit(args,'WebUserCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="WebUserCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

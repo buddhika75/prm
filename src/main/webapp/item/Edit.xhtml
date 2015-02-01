@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ItemEditDlg" widgetVar="ItemEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditItemTitle}">
+            <h:form id="ItemEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{itemController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditItemLabel_measurmentUnit}" for="measurmentUnit" />
+                        <p:inputText id="measurmentUnit" value="#{itemController.selected.measurmentUnit}" title="#{bundle.EditItemTitle_measurmentUnit}" />
+                        <p:outputLabel value="#{bundle.EditItemLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{itemController.selected.id}" title="#{bundle.EditItemTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditItemLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{itemController.selected.name}" title="#{bundle.EditItemTitle_name}" />
+                        <p:outputLabel value="#{bundle.EditItemLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{itemController.selected.code}" title="#{bundle.EditItemTitle_code}" />
+                        <p:outputLabel value="#{bundle.EditItemLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{itemController.selected.description}" title="#{bundle.EditItemTitle_description}" />
+                        <p:outputLabel value="#{bundle.EditItemLabel_creater}" for="creater" />
+                        <p:selectOneMenu id="creater" value="#{itemController.selected.creater}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="createrItem"
+                                           itemValue="#{createrItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditItemLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{itemController.selected.createdAt}" title="#{bundle.EditItemTitle_createdAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditItemLabel_retirer}" for="retirer" />
+                        <p:selectOneMenu id="retirer" value="#{itemController.selected.retirer}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="retirerItem"
+                                           itemValue="#{retirerItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditItemLabel_retitredAt}" for="retitredAt" />
+                        <p:calendar id="retitredAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{itemController.selected.retitredAt}" title="#{bundle.EditItemTitle_retitredAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditItemLabel_category}" for="category" />
+                        <p:selectOneMenu id="category" value="#{itemController.selected.category}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="categoryItem"
+                                           itemValue="#{categoryItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditItemLabel_item}" for="item" />
+                        <p:selectOneMenu id="item" value="#{itemController.selected.item}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="itemItem"
+                                           itemValue="#{itemItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditItemLabel_parentCategory}" for="parentCategory" />
+                        <p:selectOneMenu id="parentCategory" value="#{itemController.selected.parentCategory}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="parentCategoryItem"
+                                           itemValue="#{parentCategoryItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditItemLabel_parentItem}" for="parentItem" />
+                        <p:selectOneMenu id="parentItem" value="#{itemController.selected.parentItem}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="parentItemItem"
+                                           itemValue="#{parentItemItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{itemController.update}" value="#{bundle.Save}" update="display,:ItemListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ItemEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ItemEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

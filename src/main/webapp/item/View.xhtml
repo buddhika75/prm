@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ItemViewDlg" widgetVar="ItemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewItemTitle}">
+            <h:form id="ItemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{itemController.selected != null}">
+                        <h:outputText value="#{bundle.ViewItemLabel_measurmentUnit}"/>
+                        <h:outputText value="#{itemController.selected.measurmentUnit}" title="#{bundle.ViewItemTitle_measurmentUnit}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_id}"/>
+                        <h:outputText value="#{itemController.selected.id}" title="#{bundle.ViewItemTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_name}"/>
+                        <h:outputText value="#{itemController.selected.name}" title="#{bundle.ViewItemTitle_name}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_code}"/>
+                        <h:outputText value="#{itemController.selected.code}" title="#{bundle.ViewItemTitle_code}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_description}"/>
+                        <h:outputText value="#{itemController.selected.description}" title="#{bundle.ViewItemTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_creater}"/>
+                        <h:outputText value="#{itemController.selected.creater}" title="#{bundle.ViewItemTitle_creater}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_createdAt}"/>
+                        <h:outputText value="#{itemController.selected.createdAt}" title="#{bundle.ViewItemTitle_createdAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewItemLabel_retirer}"/>
+                        <h:outputText value="#{itemController.selected.retirer}" title="#{bundle.ViewItemTitle_retirer}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_retitredAt}"/>
+                        <h:outputText value="#{itemController.selected.retitredAt}" title="#{bundle.ViewItemTitle_retitredAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewItemLabel_category}"/>
+                        <h:outputText value="#{itemController.selected.category}" title="#{bundle.ViewItemTitle_category}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_item}"/>
+                        <h:outputText value="#{itemController.selected.item}" title="#{bundle.ViewItemTitle_item}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_parentCategory}"/>
+                        <h:outputText value="#{itemController.selected.parentCategory}" title="#{bundle.ViewItemTitle_parentCategory}"/>
+                        <h:outputText value="#{bundle.ViewItemLabel_parentItem}"/>
+                        <h:outputText value="#{itemController.selected.parentItem}" title="#{bundle.ViewItemTitle_parentItem}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ItemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

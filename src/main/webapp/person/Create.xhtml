@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonCreateDlg" widgetVar="PersonCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePersonTitle}">
+            <h:form id="PersonCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_userName}" for="userName" />
+                        <p:inputText id="userName" value="#{personController.selected.userName}" title="#{bundle.CreatePersonTitle_userName}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_userName}"/>
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{personController.selected.password}" title="#{bundle.CreatePersonTitle_password}" />
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{personController.selected.name}" title="#{bundle.CreatePersonTitle_name}" />
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{personController.selected.description}" title="#{bundle.CreatePersonTitle_description}" />
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_address}" for="address" />
+                        <p:inputTextarea rows="4" cols="30" id="address" value="#{personController.selected.address}" title="#{bundle.CreatePersonTitle_address}" />
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{personController.selected.phone}" title="#{bundle.CreatePersonTitle_phone}" />
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_mobile}" for="mobile" />
+                        <p:inputText id="mobile" value="#{personController.selected.mobile}" title="#{bundle.CreatePersonTitle_mobile}" />
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{personController.selected.email}" title="#{bundle.CreatePersonTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{personController.selected.fax}" title="#{bundle.CreatePersonTitle_fax}" />
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_creater}" for="creater" />
+                        <p:selectOneMenu id="creater" value="#{personController.selected.creater}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="createrItem"
+                                           itemValue="#{createrItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{personController.selected.createdAt}" title="#{bundle.EditPersonTitle_createdAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_retirer}" for="retirer" />
+                        <p:selectOneMenu id="retirer" value="#{personController.selected.retirer}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="retirerItem"
+                                           itemValue="#{retirerItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_retitredAt}" for="retitredAt" />
+                        <p:calendar id="retitredAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{personController.selected.retitredAt}" title="#{bundle.EditPersonTitle_retitredAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePersonLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{personController.selected.id}" title="#{bundle.CreatePersonTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personController.create}" value="#{bundle.Save}" update="display,:PersonListForm:datalist,:growl" oncomplete="handleSubmit(args,'PersonCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PersonCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

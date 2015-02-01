@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="WebUserViewDlg" widgetVar="WebUserViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewWebUserTitle}">
+            <h:form id="WebUserViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{webUserController.selected != null}">
+                        <h:outputText value="#{bundle.ViewWebUserLabel_userName}"/>
+                        <h:outputText value="#{webUserController.selected.userName}" title="#{bundle.ViewWebUserTitle_userName}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_password}"/>
+                        <h:outputText value="#{webUserController.selected.password}" title="#{bundle.ViewWebUserTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_name}"/>
+                        <h:outputText value="#{webUserController.selected.name}" title="#{bundle.ViewWebUserTitle_name}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_description}"/>
+                        <h:outputText value="#{webUserController.selected.description}" title="#{bundle.ViewWebUserTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_address}"/>
+                        <h:outputText value="#{webUserController.selected.address}" title="#{bundle.ViewWebUserTitle_address}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_phone}"/>
+                        <h:outputText value="#{webUserController.selected.phone}" title="#{bundle.ViewWebUserTitle_phone}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_mobile}"/>
+                        <h:outputText value="#{webUserController.selected.mobile}" title="#{bundle.ViewWebUserTitle_mobile}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_email}"/>
+                        <h:outputText value="#{webUserController.selected.email}" title="#{bundle.ViewWebUserTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_fax}"/>
+                        <h:outputText value="#{webUserController.selected.fax}" title="#{bundle.ViewWebUserTitle_fax}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_creater}"/>
+                        <h:outputText value="#{webUserController.selected.creater}" title="#{bundle.ViewWebUserTitle_creater}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_createdAt}"/>
+                        <h:outputText value="#{webUserController.selected.createdAt}" title="#{bundle.ViewWebUserTitle_createdAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_retirer}"/>
+                        <h:outputText value="#{webUserController.selected.retirer}" title="#{bundle.ViewWebUserTitle_retirer}"/>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_retitredAt}"/>
+                        <h:outputText value="#{webUserController.selected.retitredAt}" title="#{bundle.ViewWebUserTitle_retitredAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewWebUserLabel_id}"/>
+                        <h:outputText value="#{webUserController.selected.id}" title="#{bundle.ViewWebUserTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="WebUserViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

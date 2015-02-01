@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MeasurmentUnitCreateDlg" widgetVar="MeasurmentUnitCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMeasurmentUnitTitle}">
+            <h:form id="MeasurmentUnitCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{measurmentUnitController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{measurmentUnitController.selected.id}" title="#{bundle.CreateMeasurmentUnitTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{measurmentUnitController.selected.name}" title="#{bundle.CreateMeasurmentUnitTitle_name}" />
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{measurmentUnitController.selected.code}" title="#{bundle.CreateMeasurmentUnitTitle_code}" />
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{measurmentUnitController.selected.description}" title="#{bundle.CreateMeasurmentUnitTitle_description}" />
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_creater}" for="creater" />
+                        <p:selectOneMenu id="creater" value="#{measurmentUnitController.selected.creater}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="createrItem"
+                                           itemValue="#{createrItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{measurmentUnitController.selected.createdAt}" title="#{bundle.EditMeasurmentUnitTitle_createdAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_retirer}" for="retirer" />
+                        <p:selectOneMenu id="retirer" value="#{measurmentUnitController.selected.retirer}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="retirerItem"
+                                           itemValue="#{retirerItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_retitredAt}" for="retitredAt" />
+                        <p:calendar id="retitredAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{measurmentUnitController.selected.retitredAt}" title="#{bundle.EditMeasurmentUnitTitle_retitredAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_category}" for="category" />
+                        <p:selectOneMenu id="category" value="#{measurmentUnitController.selected.category}" >
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="categoryItem"
+                                           itemValue="#{categoryItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_item}" for="item" />
+                        <p:selectOneMenu id="item" value="#{measurmentUnitController.selected.item}" >
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="itemItem"
+                                           itemValue="#{itemItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_parentCategory}" for="parentCategory" />
+                        <p:selectOneMenu id="parentCategory" value="#{measurmentUnitController.selected.parentCategory}" >
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="parentCategoryItem"
+                                           itemValue="#{parentCategoryItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMeasurmentUnitLabel_parentItem}" for="parentItem" />
+                        <p:selectOneMenu id="parentItem" value="#{measurmentUnitController.selected.parentItem}" >
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="parentItemItem"
+                                           itemValue="#{parentItemItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{measurmentUnitController.create}" value="#{bundle.Save}" update="display,:MeasurmentUnitListForm:datalist,:growl" oncomplete="handleSubmit(args,'MeasurmentUnitCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MeasurmentUnitCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

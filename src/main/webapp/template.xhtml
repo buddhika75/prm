@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+        
+        <h1>#{sessionController.logged}</h1>
+
+        <p:growl id="growl" life="3000" />
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+                <h:form id="menuForm">
+                    <p:menubar rendered="#{sessionController.logged}">
+                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        <p:submenu label="#{bundle.Maintenance}">
+                            <p:menuitem value="Area" outcome="/area/List.xhtml" />
+                            <p:menuitem value="Bill" outcome="/bill/List.xhtml" />
+                            <p:menuitem value="BillItem" outcome="/billItem/List.xhtml" />
+                            <p:menuitem value="Category" outcome="/category/List.xhtml" />
+                            <p:menuitem value="Institution" outcome="/institution/List.xhtml" />
+                            <p:menuitem value="Item" outcome="/item/List.xhtml" />
+                            <p:menuitem value="ItemEntity" outcome="/itemEntity/List.xhtml" />
+                            <p:menuitem value="MeasurmentUnit" outcome="/measurmentUnit/List.xhtml" />
+                            <p:menuitem value="MeasurmentUnitRelationships" outcome="/measurmentUnitRelationships/List.xhtml" />
+                            <p:menuitem value="Person" outcome="/person/List.xhtml" />
+                            <p:menuitem value="WebUser" outcome="/webUser/List.xhtml" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+
+            
+            <p:layoutUnit position="south" size="60">
+                <ui:insert name="footer">
+                    
+                </ui:insert>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
+                <h:outputScript library="js" name="index.js" ></h:outputScript>
+                <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css"></link>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+                <div id="logmsk" style="display: block;">
+                    <div id='close'>X</div>
+                    <div id="userbox">
+                        <h1 id="signup" style="background-color: rgb(118, 171, 219); background-position: initial initial; background-repeat: initial initial;">Sign up</h1>
+                        <div id="sumsk" style="display: none;">Sending</div>
+                        <input id="name" placeholder="ID" style="opacity: 1; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial;"></input>
+                        <input id="pass" type="password" placeholder="Password" style="opacity: 1; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial;"></input>
+                        <p id="logint" style="opacity: 1;">Login as an existing user</p>
+                        <p id="nameal" style="display: none; opacity: 1;">ID:</p>
+                        <p id="passal" style="display: none; opacity: 1;">Password:</p>
+                        <button id="signupb" style="opacity: 0.2; cursor: default;">Sign up</button>
+                    </div>
+                </div>
+
+                <ui:insert name="body"  rendered="#{sessionController.logged}">
+                </ui:insert>
+
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>

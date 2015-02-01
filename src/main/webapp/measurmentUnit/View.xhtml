@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MeasurmentUnitViewDlg" widgetVar="MeasurmentUnitViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMeasurmentUnitTitle}">
+            <h:form id="MeasurmentUnitViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{measurmentUnitController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_id}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.id}" title="#{bundle.ViewMeasurmentUnitTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_name}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.name}" title="#{bundle.ViewMeasurmentUnitTitle_name}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_code}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.code}" title="#{bundle.ViewMeasurmentUnitTitle_code}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_description}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.description}" title="#{bundle.ViewMeasurmentUnitTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_creater}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.creater}" title="#{bundle.ViewMeasurmentUnitTitle_creater}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_createdAt}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.createdAt}" title="#{bundle.ViewMeasurmentUnitTitle_createdAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_retirer}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.retirer}" title="#{bundle.ViewMeasurmentUnitTitle_retirer}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_retitredAt}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.retitredAt}" title="#{bundle.ViewMeasurmentUnitTitle_retitredAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_category}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.category}" title="#{bundle.ViewMeasurmentUnitTitle_category}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_item}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.item}" title="#{bundle.ViewMeasurmentUnitTitle_item}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_parentCategory}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.parentCategory}" title="#{bundle.ViewMeasurmentUnitTitle_parentCategory}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitLabel_parentItem}"/>
+                        <h:outputText value="#{measurmentUnitController.selected.parentItem}" title="#{bundle.ViewMeasurmentUnitTitle_parentItem}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MeasurmentUnitViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

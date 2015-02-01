@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MeasurmentUnitRelationshipsViewDlg" widgetVar="MeasurmentUnitRelationshipsViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMeasurmentUnitRelationshipsTitle}">
+            <h:form id="MeasurmentUnitRelationshipsViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{measurmentUnitRelationshipsController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitRelationshipsLabel_id}"/>
+                        <h:outputText value="#{measurmentUnitRelationshipsController.selected.id}" title="#{bundle.ViewMeasurmentUnitRelationshipsTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitRelationshipsLabel_measurmentUnitLeft}"/>
+                        <h:outputText value="#{measurmentUnitRelationshipsController.selected.measurmentUnitLeft}" title="#{bundle.ViewMeasurmentUnitRelationshipsTitle_measurmentUnitLeft}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitRelationshipsLabel_measurmentUnitRight}"/>
+                        <h:outputText value="#{measurmentUnitRelationshipsController.selected.measurmentUnitRight}" title="#{bundle.ViewMeasurmentUnitRelationshipsTitle_measurmentUnitRight}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitRelationshipsLabel_unitRatio}"/>
+                        <h:outputText value="#{measurmentUnitRelationshipsController.selected.unitRatio}" title="#{bundle.ViewMeasurmentUnitRelationshipsTitle_unitRatio}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitRelationshipsLabel_item}"/>
+                        <h:outputText value="#{measurmentUnitRelationshipsController.selected.item}" title="#{bundle.ViewMeasurmentUnitRelationshipsTitle_item}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitRelationshipsLabel_creater}"/>
+                        <h:outputText value="#{measurmentUnitRelationshipsController.selected.creater}" title="#{bundle.ViewMeasurmentUnitRelationshipsTitle_creater}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitRelationshipsLabel_createdAt}"/>
+                        <h:outputText value="#{measurmentUnitRelationshipsController.selected.createdAt}" title="#{bundle.ViewMeasurmentUnitRelationshipsTitle_createdAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitRelationshipsLabel_retirer}"/>
+                        <h:outputText value="#{measurmentUnitRelationshipsController.selected.retirer}" title="#{bundle.ViewMeasurmentUnitRelationshipsTitle_retirer}"/>
+                        <h:outputText value="#{bundle.ViewMeasurmentUnitRelationshipsLabel_retitredAt}"/>
+                        <h:outputText value="#{measurmentUnitRelationshipsController.selected.retitredAt}" title="#{bundle.ViewMeasurmentUnitRelationshipsTitle_retitredAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MeasurmentUnitRelationshipsViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

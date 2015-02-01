@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ItemEntityCreateDlg" widgetVar="ItemEntityCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateItemEntityTitle}">
+            <h:form id="ItemEntityCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{itemEntityController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{itemEntityController.selected.id}" title="#{bundle.CreateItemEntityTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{itemEntityController.selected.name}" title="#{bundle.CreateItemEntityTitle_name}" />
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{itemEntityController.selected.code}" title="#{bundle.CreateItemEntityTitle_code}" />
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{itemEntityController.selected.description}" title="#{bundle.CreateItemEntityTitle_description}" />
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_creater}" for="creater" />
+                        <p:selectOneMenu id="creater" value="#{itemEntityController.selected.creater}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="createrItem"
+                                           itemValue="#{createrItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{itemEntityController.selected.createdAt}" title="#{bundle.EditItemEntityTitle_createdAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_retirer}" for="retirer" />
+                        <p:selectOneMenu id="retirer" value="#{itemEntityController.selected.retirer}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="retirerItem"
+                                           itemValue="#{retirerItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_retitredAt}" for="retitredAt" />
+                        <p:calendar id="retitredAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{itemEntityController.selected.retitredAt}" title="#{bundle.EditItemEntityTitle_retitredAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_category}" for="category" />
+                        <p:selectOneMenu id="category" value="#{itemEntityController.selected.category}" >
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="categoryItem"
+                                           itemValue="#{categoryItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_item}" for="item" />
+                        <p:selectOneMenu id="item" value="#{itemEntityController.selected.item}" >
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="itemItem"
+                                           itemValue="#{itemItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_parentCategory}" for="parentCategory" />
+                        <p:selectOneMenu id="parentCategory" value="#{itemEntityController.selected.parentCategory}" >
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="parentCategoryItem"
+                                           itemValue="#{parentCategoryItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateItemEntityLabel_parentItem}" for="parentItem" />
+                        <p:selectOneMenu id="parentItem" value="#{itemEntityController.selected.parentItem}" >
+                            <f:selectItems value="#{itemEntityController.itemsAvailableSelectOne}"
+                                           var="parentItemItem"
+                                           itemValue="#{parentItemItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{itemEntityController.create}" value="#{bundle.Save}" update="display,:ItemEntityListForm:datalist,:growl" oncomplete="handleSubmit(args,'ItemEntityCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ItemEntityCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

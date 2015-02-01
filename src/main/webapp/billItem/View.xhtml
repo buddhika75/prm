@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BillItemViewDlg" widgetVar="BillItemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBillItemTitle}">
+            <h:form id="BillItemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{billItemController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBillItemLabel_id}"/>
+                        <h:outputText value="#{billItemController.selected.id}" title="#{bundle.ViewBillItemTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_bill}"/>
+                        <h:outputText value="#{billItemController.selected.bill}" title="#{bundle.ViewBillItemTitle_bill}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_item}"/>
+                        <h:outputText value="#{billItemController.selected.item}" title="#{bundle.ViewBillItemTitle_item}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_quentity}"/>
+                        <h:outputText value="#{billItemController.selected.quentity}" title="#{bundle.ViewBillItemTitle_quentity}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_quentityUnit}"/>
+                        <h:outputText value="#{billItemController.selected.quentityUnit}" title="#{bundle.ViewBillItemTitle_quentityUnit}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_grossRate}"/>
+                        <h:outputText value="#{billItemController.selected.grossRate}" title="#{bundle.ViewBillItemTitle_grossRate}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_billDiscountRate}"/>
+                        <h:outputText value="#{billItemController.selected.billDiscountRate}" title="#{bundle.ViewBillItemTitle_billDiscountRate}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_itemDiscountRate}"/>
+                        <h:outputText value="#{billItemController.selected.itemDiscountRate}" title="#{bundle.ViewBillItemTitle_itemDiscountRate}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_expenseRate}"/>
+                        <h:outputText value="#{billItemController.selected.expenseRate}" title="#{bundle.ViewBillItemTitle_expenseRate}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_adjustmentRate}"/>
+                        <h:outputText value="#{billItemController.selected.adjustmentRate}" title="#{bundle.ViewBillItemTitle_adjustmentRate}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_netRate}"/>
+                        <h:outputText value="#{billItemController.selected.netRate}" title="#{bundle.ViewBillItemTitle_netRate}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_grossRateCost}"/>
+                        <h:outputText value="#{billItemController.selected.grossRateCost}" title="#{bundle.ViewBillItemTitle_grossRateCost}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_billDiscountRateCost}"/>
+                        <h:outputText value="#{billItemController.selected.billDiscountRateCost}" title="#{bundle.ViewBillItemTitle_billDiscountRateCost}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_itemDiscountRateCost}"/>
+                        <h:outputText value="#{billItemController.selected.itemDiscountRateCost}" title="#{bundle.ViewBillItemTitle_itemDiscountRateCost}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_expenseRateCost}"/>
+                        <h:outputText value="#{billItemController.selected.expenseRateCost}" title="#{bundle.ViewBillItemTitle_expenseRateCost}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_adjustmentRateCost}"/>
+                        <h:outputText value="#{billItemController.selected.adjustmentRateCost}" title="#{bundle.ViewBillItemTitle_adjustmentRateCost}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_netRateCost}"/>
+                        <h:outputText value="#{billItemController.selected.netRateCost}" title="#{bundle.ViewBillItemTitle_netRateCost}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_freeQuentity}"/>
+                        <h:outputText value="#{billItemController.selected.freeQuentity}" title="#{bundle.ViewBillItemTitle_freeQuentity}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_freeUnit}"/>
+                        <h:outputText value="#{billItemController.selected.freeUnit}" title="#{bundle.ViewBillItemTitle_freeUnit}"/>
+                        <h:outputText value="#{bundle.ViewBillItemLabel_cancelledBillItem}"/>
+                        <h:outputText value="#{billItemController.selected.cancelledBillItem}" title="#{bundle.ViewBillItemTitle_cancelledBillItem}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BillItemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

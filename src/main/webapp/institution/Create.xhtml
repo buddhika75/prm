@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InstitutionCreateDlg" widgetVar="InstitutionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInstitutionTitle}">
+            <h:form id="InstitutionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{institutionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{institutionController.selected.id}" title="#{bundle.CreateInstitutionTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_institutionType}" for="institutionType" />
+                        <p:inputText id="institutionType" value="#{institutionController.selected.institutionType}" title="#{bundle.CreateInstitutionTitle_institutionType}" />
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_parentInstitution}" for="parentInstitution" />
+                        <p:selectOneMenu id="parentInstitution" value="#{institutionController.selected.parentInstitution}" >
+                            <f:selectItems value="#{institutionController.itemsAvailableSelectOne}"
+                                           var="parentInstitutionItem"
+                                           itemValue="#{parentInstitutionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_superParentInstitution}" for="superParentInstitution" />
+                        <p:selectOneMenu id="superParentInstitution" value="#{institutionController.selected.superParentInstitution}" >
+                            <f:selectItems value="#{institutionController.itemsAvailableSelectOne}"
+                                           var="superParentInstitutionItem"
+                                           itemValue="#{superParentInstitutionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{institutionController.selected.name}" title="#{bundle.CreateInstitutionTitle_name}" />
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{institutionController.selected.description}" title="#{bundle.CreateInstitutionTitle_description}" />
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_address}" for="address" />
+                        <p:inputTextarea rows="4" cols="30" id="address" value="#{institutionController.selected.address}" title="#{bundle.CreateInstitutionTitle_address}" />
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{institutionController.selected.phone}" title="#{bundle.CreateInstitutionTitle_phone}" />
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_mobile}" for="mobile" />
+                        <p:inputText id="mobile" value="#{institutionController.selected.mobile}" title="#{bundle.CreateInstitutionTitle_mobile}" />
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{institutionController.selected.email}" title="#{bundle.CreateInstitutionTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{institutionController.selected.fax}" title="#{bundle.CreateInstitutionTitle_fax}" />
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_area}" for="area" />
+                        <p:selectOneMenu id="area" value="#{institutionController.selected.area}" >
+                            <f:selectItems value="#{areaController.itemsAvailableSelectOne}"
+                                           var="areaItem"
+                                           itemValue="#{areaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_parentArea}" for="parentArea" />
+                        <p:selectOneMenu id="parentArea" value="#{institutionController.selected.parentArea}" >
+                            <f:selectItems value="#{areaController.itemsAvailableSelectOne}"
+                                           var="parentAreaItem"
+                                           itemValue="#{parentAreaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_headOfInstitution}" for="headOfInstitution" />
+                        <p:selectOneMenu id="headOfInstitution" value="#{institutionController.selected.headOfInstitution}" >
+                            <f:selectItems value="#{personController.itemsAvailableSelectOne}"
+                                           var="headOfInstitutionItem"
+                                           itemValue="#{headOfInstitutionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_creater}" for="creater" />
+                        <p:selectOneMenu id="creater" value="#{institutionController.selected.creater}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="createrItem"
+                                           itemValue="#{createrItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{institutionController.selected.createdAt}" title="#{bundle.EditInstitutionTitle_createdAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_retirer}" for="retirer" />
+                        <p:selectOneMenu id="retirer" value="#{institutionController.selected.retirer}" >
+                            <f:selectItems value="#{webUserController.itemsAvailableSelectOne}"
+                                           var="retirerItem"
+                                           itemValue="#{retirerItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInstitutionLabel_retitredAt}" for="retitredAt" />
+                        <p:calendar id="retitredAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{institutionController.selected.retitredAt}" title="#{bundle.EditInstitutionTitle_retitredAt}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{institutionController.create}" value="#{bundle.Save}" update="display,:InstitutionListForm:datalist,:growl" oncomplete="handleSubmit(args,'InstitutionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InstitutionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
